@@ -4,9 +4,9 @@ import 'package:latihan_ui_whatsapp/pages/chat_page.dart';
 import 'package:latihan_ui_whatsapp/pages/status_page.dart';
 
 class WhatsAppPage extends StatefulWidget {
-  final String title;
+  final String? title;
 
-  WhatsAppPage({Key key, this.title}) : super(key: key);
+  WhatsAppPage({Key? key, this.title}) : super(key: key);
 
   @override
   _WhatsAppPageState createState() => _WhatsAppPageState();
@@ -17,18 +17,18 @@ class _WhatsAppPageState extends State<WhatsAppPage>
   Color whatsAppGreen = Color.fromRGBO(18, 140, 126, 1.0);
   Color whatsAppLightGreen = Color.fromRGBO(37, 211, 102, 1.0);
 
-  TabController tabController;
+  TabController? tabController;
   var fabIcon = Icons.call;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
+    // tabController membutuhkan SingleTickerProviderStateMixin jadi tambahkan
     tabController = TabController(vsync: this, length: 4)
       ..addListener(() {
         setState(() {
-          switch (tabController.index) {
+          switch (tabController!.index) {
             case 0:
               break;
             case 1:
@@ -50,7 +50,7 @@ class _WhatsAppPageState extends State<WhatsAppPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.title,
+          widget.title!,
           style: TextStyle(
               color: Colors.white, fontSize: 22.0, fontWeight: FontWeight.w600),
         ),

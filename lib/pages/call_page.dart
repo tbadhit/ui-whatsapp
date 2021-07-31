@@ -3,7 +3,7 @@ import 'package:latihan_ui_whatsapp/helper/call_helper.dart';
 import 'package:latihan_ui_whatsapp/model/call_item_model.dart';
 
 class CallPage extends StatelessWidget {
-  Color whatsAppLightGreen = Color.fromRGBO(37, 211, 102, 1.0);
+  final Color whatsAppLightGreen = Color.fromRGBO(37, 211, 102, 1.0);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

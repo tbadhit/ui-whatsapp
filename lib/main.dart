@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_ui_whatsapp/whatsapp_page.dart';
+import 'package:latihan_ui_whatsapp/pages/whatsapp_page.dart';
 
 void main() {
   runApp(MyApp());
