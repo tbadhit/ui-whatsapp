@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_whatsapp/model/chat.dart';
+import 'package:latihan_ui_whatsapp/model/chat.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -21,8 +21,7 @@ class ChatPage extends StatelessWidget {
                     height: 58,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        image:
-                        DecorationImage(image: AssetImage(chat.image))),
+                        image: DecorationImage(image: AssetImage(chat.image))),
                   ),
                   Expanded(
                     child: Padding(
