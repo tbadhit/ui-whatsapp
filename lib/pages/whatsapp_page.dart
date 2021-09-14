@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_ui_whatsapp/pages/call_page.dart';
-import 'package:latihan_ui_whatsapp/pages/chat_page.dart';
 import 'package:latihan_ui_whatsapp/pages/status_page.dart';
 
-class WhatsAppPage extends StatefulWidget {
-  final String? title;
+import 'call_page.dart';
+import 'chat_page.dart';
 
-  WhatsAppPage({Key? key, this.title}) : super(key: key);
+class WhatsAppPage extends StatefulWidget {
+  const WhatsAppPage({Key? key}) : super(key: key);
 
   @override
   _WhatsAppPageState createState() => _WhatsAppPageState();
@@ -24,8 +23,7 @@ class _WhatsAppPageState extends State<WhatsAppPage>
   void initState() {
     super.initState();
 
-    // tabController membutuhkan SingleTickerProviderStateMixin jadi tambahkan
-    tabController = TabController(vsync: this, length: 4)
+    tabController = TabController(length: 4, vsync: this)
       ..addListener(() {
         setState(() {
           switch (tabController!.index) {
@@ -49,12 +47,11 @@ class _WhatsAppPageState extends State<WhatsAppPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.title!,
-          style: TextStyle(
-              color: Colors.white, fontSize: 22.0, fontWeight: FontWeight.w600),
-        ),
         backgroundColor: whatsAppGreen,
+        title: Text(
+          'WhatsApp',
+          style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+        ),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.0),
@@ -66,36 +63,37 @@ class _WhatsAppPageState extends State<WhatsAppPage>
           )
         ],
         bottom: TabBar(
-            controller: tabController,
-            tabs: [
-              Tab(
-                icon: Icon(Icons.camera_alt),
-              ),
-              Tab(
-                child: Text('CHATS'),
-              ),
-              Tab(
-                child: Text('STATUS'),
-              ),
-              Tab(
-                child: Text('CALLS'),
-              )
-            ],
-            indicatorColor: Colors.white),
+          controller: tabController,
+          tabs: [
+            Tab(
+              icon: Icon(Icons.camera_alt),
+            ),
+            Tab(
+              child: Text('CHATS'),
+            ),
+            Tab(
+              child: Text('STATUS'),
+            ),
+            Tab(
+              child: Text('CALLS'),
+            )
+          ],
+          indicatorColor: Colors.white,
+        ),
       ),
-      body: TabBarView(controller: tabController, children: [
-        // CAMERA
-        Icon(Icons.camera_alt),
-
-        // CHAT
-        ChatPage(),
-
-        // STATUS
-        StatusPage(),
-
-        // CALL
-        CallPage()
-      ]),
+      body: TabBarView(
+        controller: tabController,
+        children: [
+          // CAMERA
+          Icon(Icons.camera_alt),
+          // CHAT
+          ChatPage(),
+          // STATUS
+          StatusPage(),
+          // CALL
+          CallPage()
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(fabIcon),

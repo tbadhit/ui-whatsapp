@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_ui_whatsapp/helper/chat_helper.dart';
-import 'package:latihan_ui_whatsapp/model/chat_item_model.dart';
+import 'package:ui_whatsapp/model/chat.dart';
 
 class ChatPage extends StatelessWidget {
+  const ChatPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: chatList.length,
       itemBuilder: (context, position) {
-        ChatItemModel chatItem = ChatHelper.getItem(position);
+        var chat = chatList[position];
         return Column(
           children: <Widget>[
             Padding(
@@ -20,7 +22,7 @@ class ChatPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image:
-                            DecorationImage(image: AssetImage(chatItem.image))),
+                        DecorationImage(image: AssetImage(chat.image))),
                   ),
                   Expanded(
                     child: Padding(
@@ -32,12 +34,12 @@ class ChatPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
-                                chatItem.name,
+                                chat.name,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500, fontSize: 20),
                               ),
                               Text(
-                                chatItem.messageDate,
+                                chat.messageDate,
                                 style: TextStyle(color: Colors.black45),
                               )
                             ],
@@ -46,7 +48,7 @@ class ChatPage extends StatelessWidget {
                             height: 7,
                           ),
                           Text(
-                            chatItem.mostRecentMessage,
+                            chat.mostRecentMessage,
                             style: TextStyle(
                                 color: Colors.black45, fontSize: 16.0),
                           )
@@ -57,11 +59,11 @@ class ChatPage extends StatelessWidget {
                 ],
               ),
             ),
+            // UNTUK KASIH GARIS
             Divider(),
           ],
         );
       },
-      itemCount: ChatHelper.itemCount,
     );
   }
 }

@@ -12,9 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Create UI Whatsapp',
       theme: ThemeData(primarySwatch: Colors.green),
-      home: WhatsAppPage(
-        title: 'WhatsApp',
-      ),
+      home: WhatsAppPage(),
     );
   }
 }

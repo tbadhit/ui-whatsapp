@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_ui_whatsapp/helper/call_helper.dart';
-import 'package:latihan_ui_whatsapp/model/call_item_model.dart';
+import 'package:latihan_ui_whatsapp/model/call.dart';
 
 class CallPage extends StatelessWidget {
   final Color whatsAppLightGreen = Color.fromRGBO(37, 211, 102, 1.0);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: callList.length,
       itemBuilder: (context, position) {
-        CallItemModel callItem = CallHelper.getItem(position);
+        var call = callList[position];
         return Column(
           children: <Widget>[
             Padding(
@@ -28,7 +28,7 @@ class CallPage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(callItem.name,
+                            Text(call.name,
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
@@ -37,7 +37,7 @@ class CallPage extends StatelessWidget {
                               height: 7,
                             ),
                             Text(
-                              callItem.callDate,
+                              call.callDate,
                               style: TextStyle(
                                   fontSize: 16.0, color: Colors.black45),
                             )
@@ -56,7 +56,6 @@ class CallPage extends StatelessWidget {
           ],
         );
       },
-      itemCount: CallHelper.itemCount,
     );
   }
 }
